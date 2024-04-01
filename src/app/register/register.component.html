@@ -1,0 +1,207 @@
+<div mat-dialog-title class="pri">
+    <h1>Register</h1>
+</div>
+<form [formGroup]="regform"  (ngSubmit)="onSubmit()">
+<div mat-dialog-content class="content">
+  <h2>Upload Image In Angular</h2>
+<div class="container">
+  <img [src]="url" title="Profile Picture" height="150px" width="150px" />
+  <input
+    type="file"
+    id="img"
+    formControlName="image"
+    style="display:none"
+    accept="image/*"
+    (change)="onSelect($event)"
+  />
+  <label for="img">Upload Image</label>
+</div>
+     <br>
+     <br>
+     <br>
+   <small  *ngIf="regform.get('firstName')?.errors?.['required'] && regform.get('firstName')?.touched"
+   class="text-danger" >
+   First Name Is Required....></small>
+   <small
+   *ngIf="regform.get('firstName')?.errors?.['pattern'] && regform.get('firstName')?.touched"
+   class="text-danger"
+ >
+   Only Alphabetic Characters Are Allowed!!!!
+ </small>
+ <small  *ngIf="regform.get('firstName')?.errors?.['maxlength'] && regform.get('firstName')?.touched"
+ class="text-danger"
+>
+ Maximum Length Exceeded (Maximum 20 Characters)!!!!</small>
+ 
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" placeholder="First Name" formControlName="firstName">
+          </mat-form-field>
+           <!-- Validation Message For Empty Field!!!! -->
+           <small  *ngIf="regform.get('lastName')?.errors?.['required'] && regform.get('lastName')?.touched"
+           class="text-danger"
+          >
+           LastName Required....</small>
+
+         <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput input="text" placeholder="Last Name"  formControlName="lastName">
+          </mat-form-field>
+         </div>
+               
+         <!-- Validation Message For Empty Field!!!! --></div>
+         <small  *ngIf="regform.get('mobile')?.errors?.['required'] && regform.get('mobile')?.touched" class="text-danger">
+          Mobile number is required. </small>
+          <small *ngIf="regform.get('mobile')?.errors?.['pattern'] && regform.get('mobile')?.touched" class="text-danger">
+            Invalid mobile number format. It should be a 10-digit number.></small>
+            <small ></small>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput input="text" type="number" placeholder="+(91)"  formControlName="mobile">
+      </mat-form-field>
+                  
+    </div>
+   <small *ngIf="regform.get('email')?.errors?.['required'] && regform.get('email')?.touched"
+   class="text-danger"
+ >
+   Email Name Is Required.... </small>
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" placeholder="abc@gmail.com" formControlName="email">
+        </mat-form-field>
+       
+    </div>
+    <div class="row">
+      
+       Age  <mat-slider min="1" max="100" step="1" showTickMarks discrete [displayWith]="formatLabel">
+            <input matSliderThumb formControlName="age">
+          </mat-slider>
+    </div>
+
+    
+    <!-- Country -->
+  <div class="container">
+    <div class="form-group">
+      <label>Country:</label>
+      <select
+        class="form-select"
+        formControlName="country"
+        (change)="onChangeCountry($event)"
+      >
+        <option value="" disabled selected>Select Your location</option>
+        <option *ngFor="let country of countries" [value]="country">
+          {{ country }}
+        </option>
+      </select>
+    </div>
+
+    <!-- States -->
+    <div class="form-group">
+      <label>State:</label>
+      <select class="form-select" formControlName="state">
+        <option value="" disabled selected>Select State</option>
+        <option
+          *ngFor="let state of states[regform.get('country')?.value || '']"
+          [value]="state"
+        >
+          {{ state }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+
+          <!-- Address Type -->
+          <div class="form-group">
+            <label>Address Type:</label>
+            <select
+              class="form-select"
+              formControlName="addressType"
+              (change)="onAddressTypeChange($event)"
+            >
+              <option value="home">Home</option>
+              <option value="company">Company</option>
+            </select>
+          </div>
+    
+          <!-- Address 1 and 2 -->
+          <div
+            *ngIf="isHomeAddressSelected() || isCompanyAddressSelected()"
+            class="form-group"
+          >
+            <label
+              >{{
+                isHomeAddressSelected() ? "Address" : "Company Address"
+              }}
+              1:</label
+            >
+            <input
+              formControlName="{{
+                isHomeAddressSelected() ? 'address1' : 'companyAddress1'
+              }}"
+              type="text"
+              class="form-control"
+              placeholder="Enter {{
+                isHomeAddressSelected() ? 'address' : 'company address'
+              }}"
+            />
+          </div>
+          <div
+            *ngIf="isHomeAddressSelected() || isCompanyAddressSelected()"
+            class="form-group"
+          >
+            <label
+              >{{
+                isHomeAddressSelected() ? "Address" : "Company Address"
+              }}
+              2:</label
+            >
+            <input
+              formControlName="{{
+                isHomeAddressSelected() ? 'address2' : 'companyAddress2'
+              }}"
+              type="text"
+              class="form-control"
+              placeholder="Enter {{
+                isHomeAddressSelected() ? 'address' : 'company address'
+              }}"
+            />
+          </div>
+  
+    <!-- Interests -->
+    <div class="form-group col-60 mt-3">
+      <mat-form-field class="example-chip-list">
+        <mat-label>Interest:</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Enter interests">
+          <mat-chip-row
+            *ngFor="let interest of interests"
+            (removed)="removeInterest(interest)"
+          >
+            {{ interest }}
+            <button matChipRemove [attr.aria-label]="'remove ' + interest">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+          <input
+            placeholder="New interest..."
+            [matChipInputFor]="chipGrid"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addInterest($event)"
+          />
+        </mat-chip-grid>
+      </mat-form-field>
+      </div>
+  
+   
+     </div>
+        
+<div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="regform.invalid">Submit</button>
+</div>
+</form>

@@ -1,0 +1,93 @@
+<section class="header-wrapper">
+    <!-- container - starts -->
+    <div class="container pt-5">
+      <!-- nav starts -->
+      <div class="row">
+        <div class="col">
+          <app-nav></app-nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Profile Section -->
+  <section class="profile-wrapper">
+    <div class="container pt-4">
+      <div class="row">
+        <div class="col-md-12 mx-auto text-center">
+          <h2 class="mb-0 my-2 pb-2">Profile</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div class="row">
+            <div class="col-md-5 col-sm-5">
+              <!-- Profile Image -->
+              <div class="card-body text-center">
+                <img class="img-fluid avatar-img" *ngIf="userData?.image" [src]="userData?.image" alt="{{userData?.image}}" title="{{userData?.image}}">
+              </div>
+  
+              <!-- Edit Photo and Edit Profile Buttons -->
+              <div class="card-body text-center">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-20">
+                      <label id="file" class="btn btn-warning"> Edit Photo
+                        <input type="file" class="form-control" accept="image/*" >
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-20">
+                      <button type="submit" class="btn btn-warning">Edit Profile</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 col-sm-7">
+              <!-- Profile Description -->
+              <div class="card-body profile-desc">
+                <p>
+                  I'm {{userData?.firstName}} {{userData?.lastName}} and I am above {{userData?.age}} years of age.
+                  <br> You can send your emails to
+                  <a href='mailto:{{userData?.email}}'>{{userData?.email}}</a>.
+                </p>
+                <!-- Address -->
+                <p>
+                  <ng-container *ngIf="userData?.addressType === 'home'; else companyAddress">
+                    I live in {{ userData?.address1 }} {{ userData?.address2 }}, {{ userData?.state }}, {{ userData?.country }}.
+                  </ng-container>
+                  <ng-template #companyAddress>
+                    My company address is {{ userData?.companyAddress1 }} {{ userData?.companyAddress2 }}, {{ userData?.state }}, {{ userData?.country }}.
+                  </ng-template>
+                </p>
+                <!-- Interests -->
+                <p>
+                  My hobbies are
+                  <span *ngFor="let interest of userData?.interests; let isFirst = first; let isLast = last;">
+                    <ng-container *ngIf="isFirst; else notFirst">{{ interest }}</ng-container>
+                    <ng-template #notFirst>
+                      <ng-container *ngIf="isLast"> & {{ interest }}</ng-container>
+                      <ng-container *ngIf="!isLast">, {{ interest }}</ng-container>
+                    </ng-template>
+                  </span>.
+                </p>
+                <!-- Agree Button -->
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="mb-20  ">
+                      <button type="submit" class="btn btn-success" routerLink="/home">I Agree</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </section>
+
+ 

@@ -1,0 +1,35 @@
+.content{
+    padding-top: 10px;
+}
+.row{
+    display: flex;
+    gap: 10px;
+
+    mat-form-field{
+        width:100%;
+    }
+}
+.container{
+    display:flex;
+    gap: 90px;
+}
+.action{
+    padding: 0px 25px 20px;
+   button{
+    flex: 1;
+   }
+}
+mat-slider {
+    width: 300px;
+  }
+  .pri{
+    background-color: blue;
+  }
+
+  .color{
+    color: red;
+  }
+ 
+  
+  
+ 

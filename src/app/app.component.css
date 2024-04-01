@@ -1,0 +1,12 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .container{
+    text-align: center;
+  }
+  mat-slider {
+    width: 300px;
+  }
+  .color{
+    color: red;
+  }
