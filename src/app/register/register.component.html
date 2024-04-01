@@ -1,9 +1,9 @@
 <div mat-dialog-title class="pri">
-    <h1>Register</h1>
+    <h1 class="text-white">Registration</h1>
 </div>
 <form [formGroup]="regform"  (ngSubmit)="onSubmit()">
 <div mat-dialog-content class="content">
-  <h2>Upload Image In Angular</h2>
+  <h2>Profile Image</h2>
 <div class="container">
   <img [src]="url" title="Profile Picture" height="150px" width="150px" />
   <input
@@ -14,24 +14,24 @@
     accept="image/*"
     (change)="onSelect($event)"
   />
-  <label for="img">Upload Image</label>
+  <label for="img" class="text-success">Upload Image</label>
 </div>
      <br>
      <br>
      <br>
    <small  *ngIf="regform.get('firstName')?.errors?.['required'] && regform.get('firstName')?.touched"
    class="text-danger" >
-   First Name Is Required....></small>
+   First name is required!</small>
    <small
    *ngIf="regform.get('firstName')?.errors?.['pattern'] && regform.get('firstName')?.touched"
    class="text-danger"
  >
-   Only Alphabetic Characters Are Allowed!!!!
+   Only alphabetic characters are allowed!
  </small>
  <small  *ngIf="regform.get('firstName')?.errors?.['maxlength'] && regform.get('firstName')?.touched"
  class="text-danger"
 >
- Maximum Length Exceeded (Maximum 20 Characters)!!!!</small>
+ Maximum length exceeded! (Maximum 20 Characters)</small>
  
     <div class="row">
         <mat-form-field appearance="outline">
@@ -42,7 +42,7 @@
            <small  *ngIf="regform.get('lastName')?.errors?.['required'] && regform.get('lastName')?.touched"
            class="text-danger"
           >
-           LastName Required....</small>
+           LastName is required!</small>
 
          <div class="row">
           <mat-form-field appearance="outline">
@@ -53,9 +53,9 @@
                
          <!-- Validation Message For Empty Field!!!! --></div>
          <small  *ngIf="regform.get('mobile')?.errors?.['required'] && regform.get('mobile')?.touched" class="text-danger">
-          Mobile number is required. </small>
+          Mobile number is required!</small>
           <small *ngIf="regform.get('mobile')?.errors?.['pattern'] && regform.get('mobile')?.touched" class="text-danger">
-            Invalid mobile number format. It should be a 10-digit number.></small>
+            Invalid mobile number format! It should be a 10-digit number.></small>
             <small ></small>
     <div class="row">
       <mat-form-field appearance="outline">
@@ -67,7 +67,7 @@
    <small *ngIf="regform.get('email')?.errors?.['required'] && regform.get('email')?.touched"
    class="text-danger"
  >
-   Email Name Is Required.... </small>
+   Email name is required!</small>
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
@@ -86,13 +86,13 @@
     <!-- Country -->
   <div class="container">
     <div class="form-group">
-      <label>Country:</label>
+      <label>Country</label>
       <select
-        class="form-select"
+        class="form-select mb-3"
         formControlName="country"
         (change)="onChangeCountry($event)"
       >
-        <option value="" disabled selected>Select Your location</option>
+        <option value="" disabled selected>Select Country</option>
         <option *ngFor="let country of countries" [value]="country">
           {{ country }}
         </option>
@@ -102,7 +102,7 @@
     <!-- States -->
     <div class="form-group">
       <label>State:</label>
-      <select class="form-select" formControlName="state">
+      <select class="form-select mb-3" formControlName="state">
         <option value="" disabled selected>Select State</option>
         <option
           *ngFor="let state of states[regform.get('country')?.value || '']"
@@ -117,9 +117,9 @@
 
           <!-- Address Type -->
           <div class="form-group">
-            <label>Address Type:</label>
+            <label>Address Type</label>
             <select
-              class="form-select"
+              class="form-select mb-3"
               formControlName="addressType"
               (change)="onAddressTypeChange($event)"
             >
@@ -131,20 +131,20 @@
           <!-- Address 1 and 2 -->
           <div
             *ngIf="isHomeAddressSelected() || isCompanyAddressSelected()"
-            class="form-group"
+            class="form-group mb-3"
           >
             <label
               >{{
                 isHomeAddressSelected() ? "Address" : "Company Address"
               }}
-              1:</label
+              1</label
             >
             <input
               formControlName="{{
                 isHomeAddressSelected() ? 'address1' : 'companyAddress1'
               }}"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               placeholder="Enter {{
                 isHomeAddressSelected() ? 'address' : 'company address'
               }}"
@@ -158,14 +158,14 @@
               >{{
                 isHomeAddressSelected() ? "Address" : "Company Address"
               }}
-              2:</label
+              2</label
             >
             <input
               formControlName="{{
                 isHomeAddressSelected() ? 'address2' : 'companyAddress2'
               }}"
               type="text"
-              class="form-control"
+              class="form-control mb-3"
               placeholder="Enter {{
                 isHomeAddressSelected() ? 'address' : 'company address'
               }}"
@@ -175,7 +175,7 @@
     <!-- Interests -->
     <div class="form-group col-60 mt-3">
       <mat-form-field class="example-chip-list">
-        <mat-label>Interest:</mat-label>
+        <mat-label>Interest</mat-label>
         <mat-chip-grid #chipGrid aria-label="Enter interests">
           <mat-chip-row
             *ngFor="let interest of interests"
@@ -183,7 +183,7 @@
           >
             {{ interest }}
             <button matChipRemove [attr.aria-label]="'remove ' + interest">
-              <mat-icon>cancel</mat-icon>
+              <mat-icon>Cancel</mat-icon>
             </button>
           </mat-chip-row>
           <input

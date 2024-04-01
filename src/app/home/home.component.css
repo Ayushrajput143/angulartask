@@ -4,7 +4,7 @@ Header Section
 
 .header-wrapper {
     margin-bottom: 7%;
-    background-color: rgb(71, 11, 126);
+    background-color: rgb(173, 228, 22);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -67,7 +67,7 @@ Header Section
     content: "";
     display: block;
     width: 10em;
-    background-color: deepskyblue;
+    background-color: red;
     height: 0.5em;
     margin: 2em auto;
   }

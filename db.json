@@ -1,5 +1,24 @@
 {
-    "users":[
-        
-    ]
+  "users": [
+    {
+      "firstName": "Ajay",
+      "lastName": "Gupta",
+      "mobile": 1234567899,
+      "email": "ajay@gmail.com",
+      "age": 22,
+      "image": "C:\\fakepath\\WIN_20230414_21_33_11_Pro.jpg",
+      "country": "India",
+      "state": "Maharashtra",
+      "addressType": "home",
+      "address1": "Nallasopara",
+      "address2": "Vasai",
+      "companyAddress1": null,
+      "companyAddress2": null,
+      "interests": [
+        "Cricket",
+        "Book Reading"
+      ],
+      "id": 1
+    }
+  ]
 }

@@ -162,7 +162,7 @@ formatLabel(value: number): string {
 //     this.showError = true;
 //   }
 // }
-url = 'https://img.icons8.com/ios/100/000000/contract-job.png';
+url = 'https://th.bing.com/th/id/OIP.GHGGLYe7gDfZUzF_tElxiQHaHa?w=181&h=181&c=7&r=0&o=5&dpr=1.3&pid=1.7';
 onSelect(event: any) {
   let fileType = event.target.files[0].type;
   if (fileType.match(/image\/*/)) {

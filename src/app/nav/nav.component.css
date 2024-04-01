@@ -43,11 +43,11 @@ nav {
   }
   
   .main-nav li a:hover {
-    border-top: 4px solid #4acaff;
+    border-top: 4px solid red;
   }
   
   .active-link {
-    border-top: 4px solid #4acaff !important;
+    border-top: 4px solid red !important;
   }
   
   /* Main Nav - ends*/
