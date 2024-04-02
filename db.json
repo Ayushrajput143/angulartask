@@ -1,22 +1,21 @@
 {
   "users": [
     {
-      "firstName": "Ajay",
-      "lastName": "Gupta",
-      "mobile": 1234567899,
-      "email": "ajay@gmail.com",
-      "age": 22,
-      "image": "C:\\fakepath\\WIN_20230414_21_33_11_Pro.jpg",
+      "firstName": "Vikas",
+      "lastName": "Jha",
+      "mobile": 8806185541,
+      "email": "vikas@gmail.com",
+      "age": 26,
+      "image": "C:\\fakepath\\foot4.jpg",
       "country": "India",
       "state": "Maharashtra",
       "addressType": "home",
-      "address1": "Nallasopara",
-      "address2": "Vasai",
+      "address1": "Pragati Nagar",
+      "address2": "Nallasopara",
       "companyAddress1": null,
       "companyAddress2": null,
       "interests": [
-        "Cricket",
-        "Book Reading"
+        "Cricket"
       ],
       "id": 1
     }

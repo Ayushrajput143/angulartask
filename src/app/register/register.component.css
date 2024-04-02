@@ -23,11 +23,15 @@ mat-slider {
     width: 300px;
   }
   .pri{
-    background-color: blue;
+    background-color: #ade416;
   }
 
   .color{
     color: red;
+  }
+
+  .a {
+    background-color: #ade416;
   }
  
   

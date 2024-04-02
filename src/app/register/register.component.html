@@ -14,7 +14,7 @@
     accept="image/*"
     (change)="onSelect($event)"
   />
-  <label for="img" class="text-success">Upload Image</label>
+  <label for="img" class="text-success">Upload Your Image</label>
 </div>
      <br>
      <br>
@@ -77,7 +77,7 @@
     </div>
     <div class="row">
       
-       Age  <mat-slider min="1" max="100" step="1" showTickMarks discrete [displayWith]="formatLabel">
+       Age  <mat-slider min="20" max="60" step="1" showTickMarks discrete [displayWith]="formatLabel">
             <input matSliderThumb formControlName="age">
           </mat-slider>
     </div>
@@ -202,6 +202,6 @@
         
 <div mat-dialog-actions class="action">
     <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
-    <button mat-raised-button color="primary" [disabled]="regform.invalid">Submit</button>
+    <button mat-raised-button class="a" [disabled]="regform.invalid">Submit</button>
 </div>
 </form>
